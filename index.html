@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QuizGenius - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>QuizGenius</h1>
+    <p>This tool is useful for Sri Lankan students preparing for GCE O/L, A/L, and University exams.</p>
+
+    <!-- Exam Type -->
+    <label>Exam Type:
+      <select id="examType">
+        <option value="OL">GCE O/L</option>
+        <option value="AL">GCE A/L</option>
+        <option value="UNI">University</option>
+      </select>
+    </label>
+
+    <!-- Subject -->
+    <label>Subject:
+      <select id="subjectSelect"></select>
+    </label>
+
+    <!-- Language -->
+    <label>Language:
+      <select id="langSelect">
+        <option value="en">English</option>
+        <option value="si">සිංහල</option>
+      </select>
+    </label>
+
+    <button id="startQuizBtn">Start Quiz</button>
+  </div>
+
+  <script>
+    const subjectSelect = document.getElementById('subjectSelect');
+    const examType = document.getElementById('examType');
+    const startQuizBtn = document.getElementById('startQuizBtn');
+
+    const subjects = {
+      OL: ["Science", "English", "Mathematics", "History", "Buddhist", "Sinhala"],
+      AL: ["Logic", "ICT", "Political Science", "Media", "Physics", "Chemistry", "Biology", "Economics", "Business Studies"],
+      UNI: ["Law", "Business Studies", "Art", "Psychology"]
+    };
+
+    function populateSubjects() {
+      const type = examType.value;
+      subjectSelect.innerHTML = '';
+      subjects[type].forEach(sub => {
+        const opt = document.createElement('option');
+        opt.value = sub;
+        opt.textContent = sub;
+        subjectSelect.appendChild(opt);
+      });
+    }
+
+    populateSubjects();
+    examType.addEventListener('change', populateSubjects);
+
+    startQuizBtn.addEventListener('click', () => {
+      const type = examType.value;
+      const subject = subjectSelect.value;
+      const lang = document.getElementById('langSelect').value;
+      window.location.href = `quiz.html?exam=${type}&subject=${subject}&lang=${lang}`;
+    });
+  </script>
+</body>
+</html>

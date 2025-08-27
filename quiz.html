@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QuizGenius - Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 id="quizTitle">Quiz</h1>
+
+    <div id="progressBarContainer" style="width:100%;background:#eee;height:8px;border-radius:4px;display:none;">
+      <div id="progressBar" style="height:8px;width:0%;background:#3b82f6;border-radius:4px;"></div>
+    </div>
+
+    <div id="quizContainer"></div>
+
+    <div id="actionButtons">
+      <button id="submitBtn">Submit</button>
+      <button id="exportCsvBtn" style="display:none;">Export CSV</button>
+      <button id="exportPdfBtn" style="display:none;">Export PDF</button>
+    </div>
+
+    <div id="resultContainer"></div>
+
+    <div>
+      <button class="return-btn" onclick="window.location.href='index.html'">
+        Return to Home Page
+      </button>
+    </div>
+  </div>
+
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Sinhala font for jsPDF -->
+  <script src="NotoSansSinhala_normal.js"></script>
+
+  <!-- Modules -->
+  <script type="module" src="questions.js"></script>
+  <script type="module" src="bloomModel.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
